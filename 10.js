@@ -60,8 +60,8 @@ function calresult(unique)
 }
 unique=rduplicates
 (ele,'id')
-console.log(unique)
-console.log(unique[0].gpa)
+//console.log(unique)
+//console.log(unique[0].gpa)
 result=calresult(unique)
 
 console.log(result)
