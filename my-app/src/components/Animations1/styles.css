@@ -1,0 +1,23 @@
+.component{
+    height:800px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    
+}
+.button-clickme{
+    width:150px;
+    height:50px;
+    background-color: orangered;
+    border-style: orangered;
+    color:white;
+    transition:width 1s;
+
+}
+.button-clickme:hover{
+    width:100px;
+    background-color:green;
+    border-style:green;
+    border-radius:75px;
+    transition-timing-function: ease-in-out;
+}
