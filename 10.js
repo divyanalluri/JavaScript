@@ -58,8 +58,7 @@ function calresult(unique)
     }
     return "Distinction: "+dist+"\n"+"A- Grade: "+a+"\n"+"B-grade: "+b+"\n"+"C-grade: "+c+"\n"+"Fail: "+fail
 }
-unique=rduplicates
-(ele,'id')
+unique=rduplicates(ele,'id')
 //console.log(unique)
 //console.log(unique[0].gpa)
 result=calresult(unique)

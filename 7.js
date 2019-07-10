@@ -10,4 +10,5 @@ function reverse(ele)
     return dict
 }
 var value=reverse(ele)
+console.log(dict["one"])
 console.log(value)

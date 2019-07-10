@@ -1,7 +1,6 @@
 var arr=[2,4,5,6]
-function tomultiply(num)
-{
-    return num=num*2
-}
-var value=arr.map(tomultiply)
+
+var value=arr.map( (num) =>{
+    return num*2;
+})
 console.log(value)

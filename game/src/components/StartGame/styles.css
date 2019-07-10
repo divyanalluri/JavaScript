@@ -1,0 +1,104 @@
+.total-display{
+    background-color:blue;
+    width:2000px;
+    height:900px;
+  }
+  .level-toggle-display{
+    display:flex;
+    align-items:center;
+    color:white;
+    justify-content:space-around;
+    margin-top:50px;
+  }
+  .completion-message{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .row-wise{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .switch{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch .check-box{
+    opacity:0;
+    width:0;
+    height:0;
+  }
+  .slider{
+    position:absolute;
+    cursor:pointer;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#ccc;
+    transition:.4s;
+    border-radius:34px;
+  }
+  .slider:before{
+    position:absolute;
+    content:"";
+    height:26px;
+    width:26px;
+    left:4px;
+    bottom:4px;
+    background-color:white;
+    transition:.4s;
+    border-radius: 50%;
+  }
+  .check-box:checked+ .icons{
+    background-color:red;
+    border-color:red;
+  }
+  
+  
+  .check-box:checked +.slider{
+    background-color:green;
+  }
+  .check-box:checked + .row-wise{
+    background-color:red;
+  }
+  .check-box:focus +.slider{
+    box-shadow:0 0 1px green;
+  }
+  .check-box:checked+ .slider:before{
+    transform:translateX(26px);
+  }
+  .check-box:checked +.total-display{
+    background-color:red;
+  }
+  .icons{
+    width:100px;
+    height:100px;
+    border-style: solid;
+    background-color:'#C1B7AA';
+    border-color:'#00008f';
+    color:white;
+    transition:1s;
+
+}
+  .rightcolorchosen{
+    width:100px;
+    height:100px;
+    border-style: solid;
+    border-color:'#00008f';
+    color:white;
+    background-color:green;
+    transition:1s;
+  }
+  .wrongcolorchosen{
+    width:100px;
+    height:100px;
+    border-style: solid;
+    border-color:'#00008f';
+    color:white;
+    transition: 1s;
+    background-color: red;
+  }

@@ -1,7 +1,6 @@
 var ele=[{fullname:"sita",age:16},{fullname:"ram",age:19},{fullname:"laxman",age:15}]
-function checkage(obj){
 
+var value=ele.filter( (obj) => {
     return obj.age>=18
-}
-var value=ele.filter(checkage)
+})
 console.log(value)

@@ -4,7 +4,7 @@ function position(str,ch)
     var i=str.indexOf(ch)
     return i;
 }
-value=position(str,'U')
+value=position(str,'L')
 //console.log(value)
 function cal(value)
 {

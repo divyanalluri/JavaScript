@@ -1,22 +1,23 @@
-var str="You Progress the nation flows"
+var str="You Progress the nation follows"
 var val=[]
 var index
 function long(str)
 {
-    str=str.split(" ")
-    for(i=0;i<str.length;i++)
+    if(str.length==0)
     {
-        val[i]=str[i].length
+        return -1;
     }
-    index=0
-    max=val[0]
-    for(i=1;i<val.length;i++)
+    str=str.split(" ")
+    max=str[0].length;
+    index=0;
+    for(i=1;i<str.length;i++)
     {
-        if(val[i]>max)
+        if(str[i].length>max)
             {
-                max=val[i]
+                max=str[i].length
                 index=i;
             }
+
     }
     return str[index]
 }

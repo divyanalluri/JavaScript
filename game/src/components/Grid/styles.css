@@ -1,0 +1,33 @@
+.icons{
+    width:100px;
+    height:100px;
+    border-style: solid;
+    background-color:'#C1B7AA';
+    border-color:'#00008f';
+    color:white;
+    transition:.4s;
+
+}
+  .rightcolorchosen{
+    width:100px;
+    height:100px;
+    border-style: solid;
+    border-color:'#00008f';
+    color:white;
+    background-color:green;
+    transition:.4s;
+  }
+  .wrongcolorchosen{
+    width:100px;
+    height:100px;
+    border-style: solid;
+    border-color:'#00008f';
+    color:white;
+    transition: 4s;
+    background-color: red;
+  }
+  .row-wise{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
