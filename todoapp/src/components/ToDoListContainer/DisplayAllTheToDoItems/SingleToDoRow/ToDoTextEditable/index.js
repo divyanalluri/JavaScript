@@ -7,7 +7,15 @@ class ToDoTextEditable extends Component {
   }
 
   render() {
-    return <span>{this.props.toDoText}</span>;
+    return (
+      <span>
+        {!this.props.todo.isCompleted ? (
+          this.props.todo.toDoText
+        ) : (
+          <strike>{this.props.todo.toDoText}</strike>
+        )}
+      </span>
+    );
   }
 }
 export default ToDoTextEditable;

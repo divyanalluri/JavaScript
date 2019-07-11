@@ -8,15 +8,13 @@ class DisplayAllTheToDoItems extends Component {
     this.state = {};
   }
   renderList = () => {
-    const sample = [];
-    for (var i = 0; i < this.props.list.length; i++) {
-      sample.push(
-        <div>
-          <SingleToDoRow list={this.props.list[i]} />
-        </div>
-      );
-    }
-    return sample;
+    return this.props.toDoText.map(todo => (
+      <SingleToDoRow
+        todo={todo}
+        key={todo.id}
+        modifyIsCompleted={this.props.modifyIsCompleted}
+      />
+    ));
   };
   render() {
     return <div>{this.renderList()}</div>;

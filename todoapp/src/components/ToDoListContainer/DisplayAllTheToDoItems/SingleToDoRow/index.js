@@ -7,12 +7,19 @@ class SingleToDoRow extends Component {
     super(props);
     this.state = {};
   }
-
+  onChange = event => {
+    alert(event.target.checked);
+    this.props.modifyIsCompleted(this.props.todo.id);
+  };
   render() {
     return (
       <div className="single-row-todo">
-        <input type="checkbox" checked={this.props.list.isCompleted} />
-        <ToDoTextEditable toDoText={this.props.list.toDoText} />
+        <input
+          type="checkbox"
+          checked={this.props.todo.isCompleted}
+          onChange={this.onChange}
+        />
+        <ToDoTextEditable todo={this.props.todo} />
         <button>X</button>
       </div>
     );

@@ -14,9 +14,12 @@ class AddNewToDo extends Component {
     });
   };
   onKeyPress = event => {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
+      console.log(this.state.newToDoItem);
       this.props.addNewToDoToList(this.state.newToDoItem);
-      document.getElementById("todo-item").value = "";
+      this.setState({
+        newToDoItem: ""
+      });
     }
   };
   render() {
@@ -28,6 +31,7 @@ class AddNewToDo extends Component {
           className="todo-item"
           id="todo-item"
           onKeyPress={this.onKeyPress}
+          value={this.state.newToDoItem}
         />
       </div>
     );

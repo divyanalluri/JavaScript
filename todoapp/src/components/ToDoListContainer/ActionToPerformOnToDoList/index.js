@@ -13,7 +13,6 @@ class ActionToPerformOnToDoList extends Component {
     };
   }
   addNewToDoToList = item => {
-    const samplearray = [];
     this.setState({});
   };
 
