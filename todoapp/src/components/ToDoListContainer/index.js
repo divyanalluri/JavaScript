@@ -13,7 +13,6 @@ class ToDoListContainer extends Component {
   }
 
   addNewToDoToList = item => {
-    alert(item);
     const toDoListvalues = this.state.toDoList;
     let toDoitem = {
       isCompleted: false,
@@ -28,7 +27,6 @@ class ToDoListContainer extends Component {
 
   deleteCompletedToDo = id => {
     var index = 0;
-    alert(id);
     const deleteRow = this.state.toDoList;
     for (var i = 0; i < this.state.toDoList.length; i++) {
       if (this.state.toDoList[i].id == id) {
@@ -36,7 +34,6 @@ class ToDoListContainer extends Component {
         break;
       }
     }
-    alert(index);
     deleteRow.splice(index, 1);
     this.setState({
       toDoList: deleteRow
@@ -64,7 +61,6 @@ class ToDoListContainer extends Component {
   };
 
   toUpdateToDo = (updatedToDoMessage, id) => {
-    alert(updatedToDoMessage);
     var index = 0;
     const updaterow = this.state.toDoList;
     for (var i = 0; i < this.state.toDoList.length; i++) {
@@ -73,7 +69,6 @@ class ToDoListContainer extends Component {
         break;
       }
     }
-    alert(index);
     let updateitem = {
       isCompleted: this.state.toDoList[index].isCompleted,
       id: this.state.toDoList[index].id,

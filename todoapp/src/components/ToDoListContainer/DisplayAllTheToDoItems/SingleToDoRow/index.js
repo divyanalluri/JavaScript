@@ -8,7 +8,6 @@ class SingleToDoRow extends Component {
     this.state = {};
   }
   onChange = event => {
-    alert(event.target.checked);
     this.props.modifyIsCompleted(this.props.todo.id);
   };
   onClick = () => {
