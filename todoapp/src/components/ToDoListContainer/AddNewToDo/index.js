@@ -16,10 +16,12 @@ class AddNewToDo extends Component {
   onKeyPress = event => {
     if (event.key === "Enter") {
       console.log(this.state.newToDoItem);
-      this.props.addNewToDoToList(this.state.newToDoItem);
-      this.setState({
-        newToDoItem: ""
-      });
+      if (this.state.newToDoItem != "") {
+        this.props.addNewToDoToList(this.state.newToDoItem);
+        this.setState({
+          newToDoItem: ""
+        });
+      }
     }
   };
   render() {

@@ -84,6 +84,7 @@ class ToDoListContainer extends Component {
       toDoList: updaterow
     });
   };
+
   render() {
     console.log("todos", this.state.toDoList);
     return (
@@ -95,7 +96,12 @@ class ToDoListContainer extends Component {
           deleteCompletedToDo={this.deleteCompletedToDo}
           toUpdateToDo={this.toUpdateToDo}
         />
-        <ActionToPerformOnToDoList />
+        <ActionToPerformOnToDoList
+          onClickingAll={this.onClickingAll}
+          onClickingActive={this.onClickingActive}
+          onClickingCompleted={this.onClickingCompleted}
+          onClickingClearCompleted={this.onClickingClearCompleted}
+        />
       </div>
     );
   }
