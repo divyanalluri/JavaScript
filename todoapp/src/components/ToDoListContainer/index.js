@@ -8,7 +8,8 @@ class ToDoListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toDoList: []
+      toDoList: [],
+      action: "all"
     };
   }
 
@@ -79,23 +80,68 @@ class ToDoListContainer extends Component {
       toDoList: updaterow
     });
   };
+  filteredtodo = [];
 
+  onClickingFilter = action => {
+    alert(action);
+    this.setState({
+      action: action
+    });
+  };
+  filterData = () => {
+    const filtering = this.state.toDoList;
+    if (this.state.action == "all") {
+      this.filteredtodo = filtering;
+    } else if (this.state.action == "completed") {
+      this.filteredtodo = filtering.filter(function(todo) {
+        return todo.isCompleted == true;
+      });
+    } else if (this.state.action == "active") {
+      this.filteredtodo = filtering.filter(function(todo) {
+        return todo.isCompleted == false;
+      });
+    }
+    return this.filteredtodo;
+  };
+  onClickingClear = () => {
+    const filtering = this.state.toDoList;
+    this.filteredtodo = filtering.filter(function(todo) {
+      return todo.isCompleted == false;
+    });
+    this.setState({
+      toDoList: this.filteredtodo
+    });
+  };
+  noOfActiveToDos = () => {
+    this.count = this.state.toDoList.filter(function(todo) {
+      return todo.isCompleted == false;
+    });
+    return this.count.length;
+  };
+  noOfCompletedToDos = () => {
+    this.count = this.state.toDoList.filter(function(todo) {
+      return todo.isCompleted == true;
+    });
+    return this.count.length;
+  };
   render() {
     console.log("todos", this.state.toDoList);
     return (
       <div className="todo-ist-container">
         <AddNewToDo addNewToDoToList={this.addNewToDoToList} />
         <DisplayAllTheToDoItems
-          toDoText={this.state.toDoList}
+          toDoText={this.filterData()}
+          action={this.state.action}
           modifyIsCompleted={this.modifyIsCompleted}
           deleteCompletedToDo={this.deleteCompletedToDo}
           toUpdateToDo={this.toUpdateToDo}
         />
         <ActionToPerformOnToDoList
-          onClickingAll={this.onClickingAll}
-          onClickingActive={this.onClickingActive}
-          onClickingCompleted={this.onClickingCompleted}
-          onClickingClearCompleted={this.onClickingClearCompleted}
+          noOfActiveToDos={this.noOfActiveToDos()}
+          noOfCompletedToDos={this.noOfCompletedToDos()}
+          todo={this.state.toDoList}
+          onClickingFilter={this.onClickingFilter}
+          onClickingClear={this.onClickingClear}
         />
       </div>
     );

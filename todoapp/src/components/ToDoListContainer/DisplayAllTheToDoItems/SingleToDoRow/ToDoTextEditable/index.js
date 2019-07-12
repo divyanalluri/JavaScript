@@ -62,8 +62,7 @@ class ToDoTextEditable extends Component {
           this.props.todo.toDoText
         ) : (
           <strike>{this.props.todo.toDoText}</strike>
-        )}
-          <span onClick={this.onClick}>{this.props.todo.toDoText}</span> */}
+        )} */}
       </div>
     );
   }
