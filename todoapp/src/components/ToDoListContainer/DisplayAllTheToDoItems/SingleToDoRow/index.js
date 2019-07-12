@@ -11,6 +11,11 @@ class SingleToDoRow extends Component {
     alert(event.target.checked);
     this.props.modifyIsCompleted(this.props.todo.id);
   };
+  onClick = () => {
+    if (window.confirm("Do you really want to delete ?")) {
+      this.props.deleteCompletedToDo(this.props.todo.id);
+    }
+  };
   render() {
     return (
       <div className="single-row-todo">
@@ -19,8 +24,11 @@ class SingleToDoRow extends Component {
           checked={this.props.todo.isCompleted}
           onChange={this.onChange}
         />
-        <ToDoTextEditable todo={this.props.todo} />
-        <button>X</button>
+        <ToDoTextEditable
+          todo={this.props.todo}
+          toUpdateToDo={this.props.toUpdateToDo}
+        />
+        <button onClick={this.onClick}>X</button>
       </div>
     );
   }

@@ -13,6 +13,8 @@ class DisplayAllTheToDoItems extends Component {
         todo={todo}
         key={todo.id}
         modifyIsCompleted={this.props.modifyIsCompleted}
+        deleteCompletedToDo={this.props.deleteCompletedToDo}
+        toUpdateToDo={this.props.toUpdateToDo}
       />
     ));
   };

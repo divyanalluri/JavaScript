@@ -11,6 +11,7 @@ class ToDoListContainer extends Component {
       toDoList: []
     };
   }
+
   addNewToDoToList = item => {
     alert(item);
     const toDoListvalues = this.state.toDoList;
@@ -24,6 +25,24 @@ class ToDoListContainer extends Component {
       toDoList: toDoListvalues
     });
   };
+
+  deleteCompletedToDo = id => {
+    var index = 0;
+    alert(id);
+    const deleteRow = this.state.toDoList;
+    for (var i = 0; i < this.state.toDoList.length; i++) {
+      if (this.state.toDoList[i].id == id) {
+        index = i;
+        break;
+      }
+    }
+    alert(index);
+    deleteRow.splice(index, 1);
+    this.setState({
+      toDoList: deleteRow
+    });
+  };
+
   modifyIsCompleted = id => {
     var index = 0;
     const modifyToDoList = this.state.toDoList;
@@ -34,7 +53,7 @@ class ToDoListContainer extends Component {
       }
     }
     let modifyitem = {
-      isCompleted: true,
+      isCompleted: !this.state.toDoList[index].isCompleted,
       id: this.state.toDoList[index].id,
       toDoText: this.state.toDoList[index].toDoText
     };
@@ -43,14 +62,38 @@ class ToDoListContainer extends Component {
       toDoList: modifyToDoList
     });
   };
+
+  toUpdateToDo = (updatedToDoMessage, id) => {
+    alert(updatedToDoMessage);
+    var index = 0;
+    const updaterow = this.state.toDoList;
+    for (var i = 0; i < this.state.toDoList.length; i++) {
+      if (this.state.toDoList[i].id == id) {
+        index = i;
+        break;
+      }
+    }
+    alert(index);
+    let updateitem = {
+      isCompleted: this.state.toDoList[index].isCompleted,
+      id: this.state.toDoList[index].id,
+      toDoText: updatedToDoMessage
+    };
+    updaterow[index] = updateitem;
+    this.setState({
+      toDoList: updaterow
+    });
+  };
   render() {
     console.log("todos", this.state.toDoList);
     return (
-      <div>
+      <div className="todo-ist-container">
         <AddNewToDo addNewToDoToList={this.addNewToDoToList} />
         <DisplayAllTheToDoItems
           toDoText={this.state.toDoList}
           modifyIsCompleted={this.modifyIsCompleted}
+          deleteCompletedToDo={this.deleteCompletedToDo}
+          toUpdateToDo={this.toUpdateToDo}
         />
         <ActionToPerformOnToDoList />
       </div>
