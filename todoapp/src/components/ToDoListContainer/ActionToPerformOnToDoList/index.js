@@ -21,23 +21,51 @@ class ActionToPerformOnToDoList extends Component {
   render() {
     return (
       <div className="actions-bar">
-        {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-          <div>{this.props.noOfActiveToDos} items left</div>
-        ) : null}
+        <div className="items-left">
+          {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
+            <div>{this.props.noOfActiveToDos} items left</div>
+          ) : null}
+        </div>
         <div>
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            <button onClick={this.onClickAll}>All</button>
+            this.props.action == "all" ? (
+              <button onClick={this.onClickAll} className="selected">
+                All
+              </button>
+            ) : (
+              <button onClick={this.onClickAll} className="buttons">
+                All
+              </button>
+            )
           ) : null}
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            <button onClick={this.onClickActive}>Active</button>
+            this.props.action == "active" ? (
+              <button onClick={this.onClickActive} className="selected">
+                Active
+              </button>
+            ) : (
+              <button onClick={this.onClickActive} className="buttons">
+                Active
+              </button>
+            )
           ) : null}
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            <button onClick={this.onClickCompleted}>Completed</button>
+            this.props.action == "completed" ? (
+              <button onClick={this.onClickCompleted} className="selected">
+                Completed
+              </button>
+            ) : (
+              <button onClick={this.onClickCompleted} className="buttons">
+                Completed
+              </button>
+            )
           ) : null}
         </div>
         <div>
           {this.props.noOfCompletedToDos ? (
-            <button onClick={this.onClickClear}>Clear Completed</button>
+            <div onClick={this.onClickClear} className="clear-button">
+              Clear Completed
+            </div>
           ) : null}
         </div>
       </div>

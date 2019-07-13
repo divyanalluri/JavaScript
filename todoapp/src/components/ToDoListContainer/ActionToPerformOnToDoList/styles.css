@@ -1,8 +1,47 @@
 .actions-bar {
-  width: 500px;
-  height: 50px;
+  width: 526px;
+  height: 68px;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  background-color: white;
+  color: #777777;
+}
+.buttons {
+  background-color: white;
+  color: #777777;
+  border: 0px;
+  border-radius: 5px;
+  border-style: solid;
+  font-size: 14px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+.clear-button {
+  background-color: white;
+  color: #777777;
+  border: 0px;
+  border-radius: 5px;
+  border-style: solid;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 9px;
+}
+.selected {
+  border: 1px solid;
+  border-color: red;
+  background-color: white;
+  color: #777777;
+  height: 30px;
+  border-radius: 5px;
+  border-style: solid;
+  font-size: 14px;
+  margin-left: 2px;
+}
+.clear-button:hover {
+  text-decoration: underline;
+}
+.items-left {
+  margin-left: 10px;
 }

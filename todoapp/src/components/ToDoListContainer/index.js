@@ -4,6 +4,8 @@ import AddNewToDo from "./AddNewToDo";
 import DisplayAllTheToDoItems from "./DisplayAllTheToDoItems";
 import ActionToPerformOnToDoList from "./ActionToPerformOnToDoList";
 
+import "./styles.css";
+
 class ToDoListContainer extends Component {
   constructor(props) {
     super(props);
@@ -64,6 +66,10 @@ class ToDoListContainer extends Component {
   toUpdateToDo = (updatedToDoMessage, id) => {
     var index = 0;
     const updaterow = this.state.toDoList;
+    if (updatedToDoMessage == "") {
+      this.deleteCompletedToDo(id);
+      return;
+    }
     for (var i = 0; i < this.state.toDoList.length; i++) {
       if (this.state.toDoList[i].id == id) {
         index = i;
@@ -83,7 +89,6 @@ class ToDoListContainer extends Component {
   filteredtodo = [];
 
   onClickingFilter = action => {
-    alert(action);
     this.setState({
       action: action
     });
@@ -127,7 +132,8 @@ class ToDoListContainer extends Component {
   render() {
     console.log("todos", this.state.toDoList);
     return (
-      <div className="todo-ist-container">
+      <div className="todo-list-container">
+        <text className="todo-heading">todos</text>
         <AddNewToDo addNewToDoToList={this.addNewToDoToList} />
         <DisplayAllTheToDoItems
           toDoText={this.filterData()}
@@ -136,13 +142,16 @@ class ToDoListContainer extends Component {
           deleteCompletedToDo={this.deleteCompletedToDo}
           toUpdateToDo={this.toUpdateToDo}
         />
-        <ActionToPerformOnToDoList
-          noOfActiveToDos={this.noOfActiveToDos()}
-          noOfCompletedToDos={this.noOfCompletedToDos()}
-          todo={this.state.toDoList}
-          onClickingFilter={this.onClickingFilter}
-          onClickingClear={this.onClickingClear}
-        />
+        {this.noOfActiveToDos() || this.noOfCompletedToDos() ? (
+          <ActionToPerformOnToDoList
+            noOfActiveToDos={this.noOfActiveToDos()}
+            noOfCompletedToDos={this.noOfCompletedToDos()}
+            todo={this.state.toDoList}
+            onClickingFilter={this.onClickingFilter}
+            onClickingClear={this.onClickingClear}
+            action={this.state.action}
+          />
+        ) : null}
       </div>
     );
   }

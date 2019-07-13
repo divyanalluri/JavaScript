@@ -26,14 +26,16 @@ class AddNewToDo extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="todo-item">
+        <span className="drop-down" />
         <input
           type="text"
           onChange={this.onChange}
-          className="todo-item"
           id="todo-item"
+          className="todo-init-item"
           onKeyPress={this.onKeyPress}
           value={this.state.newToDoItem}
+          placeholder="What needs to be done?"
         />
       </div>
     );

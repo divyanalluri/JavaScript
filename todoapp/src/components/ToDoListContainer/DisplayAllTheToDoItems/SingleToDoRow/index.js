@@ -18,16 +18,26 @@ class SingleToDoRow extends Component {
   render() {
     return (
       <div className="single-row-todo">
-        <input
-          type="checkbox"
-          checked={this.props.todo.isCompleted}
-          onChange={this.onChange}
-        />
-        <ToDoTextEditable
-          todo={this.props.todo}
-          toUpdateToDo={this.props.toUpdateToDo}
-        />
-        <button onClick={this.onClick}>X</button>
+        <label className="checkbox-iscompleted">
+          <input
+            type="checkbox"
+            checked={this.props.todo.isCompleted}
+            onChange={this.onChange}
+            className="input-checkbox"
+          />
+          <span className="checkbox-duplicate" />
+        </label>
+        <div>
+          <div className="todo-single-editable-item">
+            <ToDoTextEditable
+              todo={this.props.todo}
+              toUpdateToDo={this.props.toUpdateToDo}
+            />
+            <button onClick={this.onClick} className="delete-buttons">
+              X
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

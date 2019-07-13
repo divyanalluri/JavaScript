@@ -1,7 +1,73 @@
 .single-row-todo {
-  width: 1000px;
-  height: 50px;
+  width: 526px;
+  height: 68px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  border-color: #f5f5f5;
+  background-color: white;
+  border-style: solid;
+  margin-top: -3px;
+}
+.todo-single-editable-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 460px;
+  height: 62px;
+  left: 50px;
+}
+.delete-buttons {
+  background-color: white;
+  color: white;
+  border: none;
+  position: absolute;
+  left: 400px;
+  top: 20px;
+}
+.todolist {
+  display: flex;
+}
+.todo-single-editable-item:hover .delete-buttons {
+  color: red;
+}
+.checkbox-iscompleted {
+  display: block;
+  position: relative;
+  user-select: none;
+}
+.checkbox-iscompleted .input-checkbox {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  cursor: pointer;
+  width: 0;
+}
+.checkbox-duplicate {
+  position: absolute;
+  top: -10px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
+  border: 1px solid #f5f5f5;
+}
+.checkbox-duplicate:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkbox-iscompleted .input-checkbox:checked ~ .checkbox-duplicate:after {
+  display: block;
+}
+.checkbox-iscompleted .checkbox-duplicate:after {
+  width: 5px;
+  /* margin-left: 7px;
+  margin-top: 5px; */
+  left: 11px;
+  top: 7px;
+  height: 10px;
+  border: solid green;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
