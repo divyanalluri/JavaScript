@@ -1,9 +1,9 @@
-.todo-items {
+.todo-item-editable {
   width: 450px;
   height: 48px;
   font-size: 25px;
 }
-.text-todo {
+.todo-list-tems {
   margin-top: 50px;
   font-size: 24px;
 }

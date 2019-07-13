@@ -15,8 +15,7 @@ class AddNewToDo extends Component {
   };
   onKeyPress = event => {
     if (event.key === "Enter") {
-      console.log(this.state.newToDoItem);
-      if (this.state.newToDoItem != "") {
+      if (this.state.newToDoItem !== "") {
         this.props.addNewToDoToList(this.state.newToDoItem);
         this.setState({
           newToDoItem: ""
@@ -31,7 +30,6 @@ class AddNewToDo extends Component {
         <input
           type="text"
           onChange={this.onChange}
-          id="todo-item"
           className="todo-init-item"
           onKeyPress={this.onKeyPress}
           value={this.state.newToDoItem}

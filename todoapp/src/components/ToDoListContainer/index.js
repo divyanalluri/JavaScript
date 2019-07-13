@@ -14,7 +14,6 @@ class ToDoListContainer extends Component {
       action: "all"
     };
   }
-
   addNewToDoToList = item => {
     const toDoListvalues = this.state.toDoList;
     let toDoitem = {
@@ -31,12 +30,7 @@ class ToDoListContainer extends Component {
   deleteCompletedToDo = id => {
     var index = 0;
     const deleteRow = this.state.toDoList;
-    for (var i = 0; i < this.state.toDoList.length; i++) {
-      if (this.state.toDoList[i].id == id) {
-        index = i;
-        break;
-      }
-    }
+    index = this.state.toDoList.findIndex(todo => todo.id === id);
     deleteRow.splice(index, 1);
     this.setState({
       toDoList: deleteRow
@@ -46,12 +40,7 @@ class ToDoListContainer extends Component {
   modifyIsCompleted = id => {
     var index = 0;
     const modifyToDoList = this.state.toDoList;
-    for (var i = 0; i < this.state.toDoList.length; i++) {
-      if (this.state.toDoList[i].id == id) {
-        index = i;
-        break;
-      }
-    }
+    index = this.state.toDoList.findIndex(todo => todo.id === id);
     let modifyitem = {
       isCompleted: !this.state.toDoList[index].isCompleted,
       id: this.state.toDoList[index].id,
@@ -66,16 +55,11 @@ class ToDoListContainer extends Component {
   toUpdateToDo = (updatedToDoMessage, id) => {
     var index = 0;
     const updaterow = this.state.toDoList;
-    if (updatedToDoMessage == "") {
+    if (updatedToDoMessage === "") {
       this.deleteCompletedToDo(id);
       return;
     }
-    for (var i = 0; i < this.state.toDoList.length; i++) {
-      if (this.state.toDoList[i].id == id) {
-        index = i;
-        break;
-      }
-    }
+    index = this.state.toDoList.findIndex(todo => todo.id === id);
     let updateitem = {
       isCompleted: this.state.toDoList[index].isCompleted,
       id: this.state.toDoList[index].id,
@@ -86,6 +70,7 @@ class ToDoListContainer extends Component {
       toDoList: updaterow
     });
   };
+
   filteredtodo = [];
 
   onClickingFilter = action => {
@@ -95,15 +80,15 @@ class ToDoListContainer extends Component {
   };
   filterData = () => {
     const filtering = this.state.toDoList;
-    if (this.state.action == "all") {
+    if (this.state.action === "all") {
       this.filteredtodo = filtering;
-    } else if (this.state.action == "completed") {
+    } else if (this.state.action === "completed") {
       this.filteredtodo = filtering.filter(function(todo) {
-        return todo.isCompleted == true;
+        return todo.isCompleted === true;
       });
-    } else if (this.state.action == "active") {
+    } else if (this.state.action === "active") {
       this.filteredtodo = filtering.filter(function(todo) {
-        return todo.isCompleted == false;
+        return todo.isCompleted === false;
       });
     }
     return this.filteredtodo;
@@ -111,7 +96,7 @@ class ToDoListContainer extends Component {
   onClickingClear = () => {
     const filtering = this.state.toDoList;
     this.filteredtodo = filtering.filter(function(todo) {
-      return todo.isCompleted == false;
+      return todo.isCompleted === false;
     });
     this.setState({
       toDoList: this.filteredtodo
@@ -119,21 +104,23 @@ class ToDoListContainer extends Component {
   };
   noOfActiveToDos = () => {
     this.count = this.state.toDoList.filter(function(todo) {
-      return todo.isCompleted == false;
+      return todo.isCompleted === false;
     });
     return this.count.length;
   };
   noOfCompletedToDos = () => {
     this.count = this.state.toDoList.filter(function(todo) {
-      return todo.isCompleted == true;
+      return todo.isCompleted === true;
     });
     return this.count.length;
   };
   render() {
-    console.log("todos", this.state.toDoList);
     return (
       <div className="todo-list-container">
-        <text className="todo-heading">todos</text>
+        <div className="todo-heading">todos</div>
+        {
+          // TODO: change prop name into enter (contains)
+        }
         <AddNewToDo addNewToDoToList={this.addNewToDoToList} />
         <DisplayAllTheToDoItems
           toDoText={this.filterData()}

@@ -28,34 +28,37 @@ class ActionToPerformOnToDoList extends Component {
         </div>
         <div>
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            this.props.action == "all" ? (
+            this.props.action === "all" ? (
               <button onClick={this.onClickAll} className="selected">
                 All
               </button>
             ) : (
-              <button onClick={this.onClickAll} className="buttons">
+              <button onClick={this.onClickAll} className="action-buttons">
                 All
               </button>
             )
           ) : null}
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            this.props.action == "active" ? (
+            this.props.action === "active" ? (
               <button onClick={this.onClickActive} className="selected">
                 Active
               </button>
             ) : (
-              <button onClick={this.onClickActive} className="buttons">
+              <button onClick={this.onClickActive} className="action-buttons">
                 Active
               </button>
             )
           ) : null}
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            this.props.action == "completed" ? (
+            this.props.action === "completed" ? (
               <button onClick={this.onClickCompleted} className="selected">
                 Completed
               </button>
             ) : (
-              <button onClick={this.onClickCompleted} className="buttons">
+              <button
+                onClick={this.onClickCompleted}
+                className="action-buttons"
+              >
                 Completed
               </button>
             )

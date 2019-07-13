@@ -1,4 +1,4 @@
-.single-row-todo {
+.single-todo-row {
   width: 526px;
   height: 68px;
   display: flex;
@@ -17,7 +17,7 @@
   height: 62px;
   left: 50px;
 }
-.delete-buttons {
+.delete-button {
   background-color: white;
   color: white;
   border: none;
@@ -25,10 +25,7 @@
   left: 400px;
   top: 20px;
 }
-.todolist {
-  display: flex;
-}
-.todo-single-editable-item:hover .delete-buttons {
+.todo-single-editable-item:hover .delete-button {
   color: red;
 }
 .checkbox-iscompleted {

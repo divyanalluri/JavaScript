@@ -47,18 +47,17 @@ class ToDoTextEditable extends Component {
         {this.state.editable ? (
           <input
             type="text"
-            contenteditable="true"
             onChange={this.onChange}
             value={this.state.todoText}
             onKeyPress={this.onKeyPress}
-            className="todo-items"
+            className="todo-item-editable"
           />
         ) : !this.props.todo.isCompleted ? (
-          <span className="text-todo" onClick={this.onClick}>
+          <span className="todo-list-tems" onClick={this.onClick}>
             {this.props.todo.toDoText}
           </span>
         ) : (
-          <strike className="text-todo">{this.props.todo.toDoText}</strike>
+          <strike className="todo-list-tems">{this.props.todo.toDoText}</strike>
         )}
       </div>
     );

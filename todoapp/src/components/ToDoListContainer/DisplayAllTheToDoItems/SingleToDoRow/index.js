@@ -17,7 +17,7 @@ class SingleToDoRow extends Component {
   };
   render() {
     return (
-      <div className="single-row-todo">
+      <div className="single-todo-row">
         <label className="checkbox-iscompleted">
           <input
             type="checkbox"
@@ -33,7 +33,7 @@ class SingleToDoRow extends Component {
               todo={this.props.todo}
               toUpdateToDo={this.props.toUpdateToDo}
             />
-            <button onClick={this.onClick} className="delete-buttons">
+            <button onClick={this.onClick} className="delete-button">
               X
             </button>
           </div>
