@@ -26,7 +26,6 @@ class ToDoListContainer extends Component {
       toDoList: toDoListvalues
     });
   };
-
   deleteCompletedToDo = id => {
     var index = 0;
     const deleteRow = this.state.toDoList;
@@ -36,22 +35,15 @@ class ToDoListContainer extends Component {
       toDoList: deleteRow
     });
   };
-
   modifyIsCompleted = id => {
     var index = 0;
     const modifyToDoList = this.state.toDoList;
     index = this.state.toDoList.findIndex(todo => todo.id === id);
-    let modifyitem = {
-      isCompleted: !this.state.toDoList[index].isCompleted,
-      id: this.state.toDoList[index].id,
-      toDoText: this.state.toDoList[index].toDoText
-    };
-    modifyToDoList[index] = modifyitem;
+    modifyToDoList[index].isCompleted = !this.state.toDoList[index].isCompleted;
     this.setState({
       toDoList: modifyToDoList
     });
   };
-
   toUpdateToDo = (updatedToDoMessage, id) => {
     var index = 0;
     const updaterow = this.state.toDoList;
@@ -60,46 +52,23 @@ class ToDoListContainer extends Component {
       return;
     }
     index = this.state.toDoList.findIndex(todo => todo.id === id);
-    let updateitem = {
-      isCompleted: this.state.toDoList[index].isCompleted,
-      id: this.state.toDoList[index].id,
-      toDoText: updatedToDoMessage
-    };
-    updaterow[index] = updateitem;
+    updaterow[index].toDoText = updatedToDoMessage;
     this.setState({
       toDoList: updaterow
     });
   };
-
-  filteredtodo = [];
-
   onClickingFilter = action => {
     this.setState({
       action: action
     });
   };
-  filterData = () => {
-    const filtering = this.state.toDoList;
-    if (this.state.action === "all") {
-      this.filteredtodo = filtering;
-    } else if (this.state.action === "completed") {
-      this.filteredtodo = filtering.filter(function(todo) {
-        return todo.isCompleted === true;
-      });
-    } else if (this.state.action === "active") {
-      this.filteredtodo = filtering.filter(function(todo) {
-        return todo.isCompleted === false;
-      });
-    }
-    return this.filteredtodo;
-  };
   onClickingClear = () => {
     const filtering = this.state.toDoList;
-    this.filteredtodo = filtering.filter(function(todo) {
+    this.filtering = this.state.toDoList.filter(function(todo) {
       return todo.isCompleted === false;
     });
     this.setState({
-      toDoList: this.filteredtodo
+      toDoList: this.filtering
     });
   };
   noOfActiveToDos = () => {
@@ -123,7 +92,7 @@ class ToDoListContainer extends Component {
         }
         <AddNewToDo addNewToDoToList={this.addNewToDoToList} />
         <DisplayAllTheToDoItems
-          toDoText={this.filterData()}
+          toDoList={this.state.toDoList}
           action={this.state.action}
           modifyIsCompleted={this.modifyIsCompleted}
           deleteCompletedToDo={this.deleteCompletedToDo}
