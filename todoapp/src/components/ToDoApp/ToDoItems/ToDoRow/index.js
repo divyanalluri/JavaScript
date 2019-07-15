@@ -11,6 +11,9 @@ class ToDoRow extends Component {
       this.props.deleteCompletedToDo(this.props.todo.id);
     }
   };
+  onClickEnter = value => {
+    this.props.toUpdateToDo(value, this.props.todo.id);
+  };
   render() {
     return (
       <div className="single-todo-row">
@@ -28,6 +31,7 @@ class ToDoRow extends Component {
             <ToDoTextEditable
               todo={this.props.todo}
               toUpdateToDo={this.props.toUpdateToDo}
+              onClickEnter={this.onClickEnter}
             />
             <button onClick={this.onClick} className="delete-button">
               X

@@ -2,15 +2,23 @@
   width: 526px;
   height: 68px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 25px;
   border: 0px;
 }
-.drop-down {
-  height: 62px;
+.spacing {
+  height: 64px;
   width: 30px;
   background-color: white;
+}
+.nospacing {
+  height: 0px;
+  width: 0px;
+}
+.todo-edit-item {
+  width: 426px;
+  height: 68px;
+  font-size: 25px;
+  border: 0px;
 }
 .todo-init-item {
   width: 500px;

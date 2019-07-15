@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
 import "./styles.css";
+import ToDoText from "./ToDoText";
+import AddNewToDo from "../../../../ToDoApp/AddNewToDo";
+
 class ToDoTextEditable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editable: false,
-      todoText: ""
+      editable: false
     };
   }
 
@@ -22,42 +24,25 @@ class ToDoTextEditable extends Component {
       });
     }
   };
-  onKeyPress = event => {
-    if (event.key === "Enter") {
-      if (!this.state.editable) {
-        this.setState({
-          editable: true
-        });
-      } else {
-        this.setState({
-          editable: false
-        });
-      }
-      this.props.toUpdateToDo(this.state.todoText, this.props.todo.id);
-    }
-  };
-  onChange = event => {
+  changeEditable = text => {
     this.setState({
-      todoText: event.target.value
+      editable: !this.state.editable
     });
+    this.props.onClickEnter(text);
   };
   render() {
     return (
       <div>
-        {this.state.editable ? (
-          <input
-            type="text"
-            onChange={this.onChange}
-            value={this.state.todoText}
-            onKeyPress={this.onKeyPress}
-            className="todo-item-editable"
-          />
-        ) : !this.props.todo.isCompleted ? (
-          <span className="todo-list-tems" onClick={this.onClick}>
-            {this.props.todo.toDoText}
-          </span>
+        {!this.state.editable ? (
+          <ToDoText onClick={this.onClick} todo={this.props.todo} />
         ) : (
-          <strike className="todo-list-tems">{this.props.todo.toDoText}</strike>
+          <AddNewToDo
+            value={this.props.todo.toDoText}
+            onClickEnter={this.changeEditable}
+            className="todo-edit-item"
+            spann="nospacing"
+            placeholder=""
+          />
         )}
       </div>
     );

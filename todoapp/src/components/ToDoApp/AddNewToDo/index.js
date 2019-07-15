@@ -5,7 +5,7 @@ class AddNewToDo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newToDoItem: ""
+      newToDoItem: props.value
     };
   }
   onChange = event => {
@@ -15,7 +15,14 @@ class AddNewToDo extends Component {
   };
   onKeyPress = event => {
     if (event.key === "Enter") {
-      if (this.state.newToDoItem !== "") {
+      if (this.props.className == "todo-init-item") {
+        if (this.state.newToDoItem !== "") {
+          this.props.onClickEnter(this.state.newToDoItem);
+          this.setState({
+            newToDoItem: ""
+          });
+        }
+      } else {
         this.props.onClickEnter(this.state.newToDoItem);
         this.setState({
           newToDoItem: ""
@@ -26,14 +33,15 @@ class AddNewToDo extends Component {
   render() {
     return (
       <div className="todo-item">
-        <span className="drop-down" />
+        <span className={this.props.spann} />
         <input
           type="text"
           onChange={this.onChange}
-          className="todo-init-item"
+          className={this.props.className}
           onKeyPress={this.onKeyPress}
           value={this.state.newToDoItem}
-          placeholder="What needs to be done?"
+          placeholder={this.props.placeholder}
+          autoFocus
         />
       </div>
     );

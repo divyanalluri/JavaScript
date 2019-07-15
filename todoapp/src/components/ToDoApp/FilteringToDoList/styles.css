@@ -7,6 +7,9 @@
   justify-content: space-between;
   background-color: white;
   color: #777777;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 10px 0 -5px white,
+    0 10px 1px -4px rgba(0, 0, 0, 0.15), 0 20px 0 -10px white,
+    0 20px 1px -9px rgba(0, 0, 0, 0.15);
 }
 .filter-buttons {
   background-color: white;

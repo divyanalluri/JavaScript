@@ -26,6 +26,9 @@ class ToDoApp extends Component {
       toDoList: toDoListvalues
     });
   };
+  onPressEnterToUpdate = item => {
+    this.toUpdateToDo(item, this.props.todo.id);
+  };
   deleteCompletedToDo = id => {
     var index = 0;
     const deleteRow = this.state.toDoList;
@@ -47,7 +50,7 @@ class ToDoApp extends Component {
   toUpdateToDo = (updatedToDoMessage, id) => {
     var index = 0;
     const updaterow = this.state.toDoList;
-    if (updatedToDoMessage === "") {
+    if (updatedToDoMessage.trim() === "") {
       this.deleteCompletedToDo(id);
       return;
     }
@@ -84,13 +87,21 @@ class ToDoApp extends Component {
     return this.count.length;
   };
   render() {
+    console.log(this.state.toDoList);
     return (
       <div className="todo-list-container">
         <div className="todo-heading">todos</div>
         {
           // TODO: change prop name into enter (contains)
         }
-        <AddNewToDo onClickEnter={this.onClickEnter} />
+        <AddNewToDo
+          onClickEnter={this.onClickEnter}
+          value=""
+          toUpdateToDo={this.toUpdateToDo}
+          className="todo-init-item"
+          spann="spacing"
+          placeholder="What needs to be done?"
+        />
         <ToDoItems
           toDoList={this.state.toDoList}
           filter={this.state.filter}

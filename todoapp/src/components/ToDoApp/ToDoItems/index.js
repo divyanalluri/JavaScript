@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import ToDoRow from "./ToDoRow";
 
 class ToDoItems extends Component {
+  onPressEnter = () => {
+    this.props.toUpdateToDo();
+  };
   renderList = () => {
     const filteredtodo = this.props.toDoList;
     if (this.props.filter === "all") {
@@ -23,6 +26,7 @@ class ToDoItems extends Component {
         modifyIsCompleted={this.props.modifyIsCompleted}
         deleteCompletedToDo={this.props.deleteCompletedToDo}
         toUpdateToDo={this.props.toUpdateToDo}
+        onClickEnter={this.props.onClickEnter}
       />
     ));
   };
