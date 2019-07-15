@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./styles.css";
 import ToDoTextEditable from "./ToDoTextEditable";
-class SingleToDoRow extends Component {
+class ToDoRow extends Component {
   onChange = event => {
     this.props.modifyIsCompleted(this.props.todo.id);
   };
@@ -38,4 +38,4 @@ class SingleToDoRow extends Component {
     );
   }
 }
-export default SingleToDoRow;
+export default ToDoRow;

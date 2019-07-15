@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 
 import AddNewToDo from "./AddNewToDo";
-import DisplayAllTheToDoItems from "./DisplayAllTheToDoItems";
-import ActionToPerformOnToDoList from "./ActionToPerformOnToDoList";
+import ToDoItems from "./ToDoItems";
+import FilteringToDoList from "./FilteringToDoList";
 
 import "./styles.css";
 
-class ToDoListContainer extends Component {
+class ToDoApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       toDoList: [],
-      action: "all"
+      filter: "all"
     };
   }
-  addNewToDoToList = item => {
+  onClickEnter = item => {
     const toDoListvalues = this.state.toDoList;
     let toDoitem = {
       isCompleted: false,
@@ -57,13 +57,13 @@ class ToDoListContainer extends Component {
       toDoList: updaterow
     });
   };
-  onClickingFilter = action => {
+  onClickingFilter = filter => {
     this.setState({
-      action: action
+      filter: filter
     });
   };
   onClickingClear = () => {
-    const filtering = this.state.toDoList;
+    const filtering = [];
     this.filtering = this.state.toDoList.filter(function(todo) {
       return todo.isCompleted === false;
     });
@@ -90,26 +90,26 @@ class ToDoListContainer extends Component {
         {
           // TODO: change prop name into enter (contains)
         }
-        <AddNewToDo addNewToDoToList={this.addNewToDoToList} />
-        <DisplayAllTheToDoItems
+        <AddNewToDo onClickEnter={this.onClickEnter} />
+        <ToDoItems
           toDoList={this.state.toDoList}
-          action={this.state.action}
+          filter={this.state.filter}
           modifyIsCompleted={this.modifyIsCompleted}
           deleteCompletedToDo={this.deleteCompletedToDo}
           toUpdateToDo={this.toUpdateToDo}
         />
         {this.noOfActiveToDos() || this.noOfCompletedToDos() ? (
-          <ActionToPerformOnToDoList
+          <FilteringToDoList
             noOfActiveToDos={this.noOfActiveToDos()}
             noOfCompletedToDos={this.noOfCompletedToDos()}
             todo={this.state.toDoList}
             onClickingFilter={this.onClickingFilter}
             onClickingClear={this.onClickingClear}
-            action={this.state.action}
+            filter={this.state.filter}
           />
         ) : null}
       </div>
     );
   }
 }
-export default ToDoListContainer;
+export default ToDoApp;

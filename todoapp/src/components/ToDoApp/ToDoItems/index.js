@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 
-import SingleToDoRow from "./SingleToDoRow";
+import ToDoRow from "./ToDoRow";
 
-class DisplayAllTheToDoItems extends Component {
+class ToDoItems extends Component {
   renderList = () => {
     const filteredtodo = this.props.toDoList;
-    if (this.props.action === "all") {
+    if (this.props.filter === "all") {
       this.filteredtodo = this.props.toDoList;
-    } else if (this.props.action === "completed") {
+    } else if (this.props.filter === "completed") {
       this.filteredtodo = this.props.toDoList.filter(function(todo) {
         return todo.isCompleted === true;
       });
-    } else if (this.props.action === "active") {
+    } else if (this.props.filter === "active") {
       this.filteredtodo = this.props.toDoList.filter(function(todo) {
         return todo.isCompleted === false;
       });
     }
     return this.filteredtodo.map(todo => (
-      <SingleToDoRow
+      <ToDoRow
         todo={todo}
         key={todo.id}
         modifyIsCompleted={this.props.modifyIsCompleted}
@@ -30,4 +30,4 @@ class DisplayAllTheToDoItems extends Component {
     return <div>{this.renderList()}</div>;
   }
 }
-export default DisplayAllTheToDoItems;
+export default ToDoItems;

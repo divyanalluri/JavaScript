@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import "./styles.css";
-
-class ActionToPerformOnToDoList extends Component {
+import { filters } from "./constants";
+class FilteringToDoList extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   onClickAll = () => {
-    this.props.onClickingFilter("all");
+    this.props.onClickingFilter(filters.all);
   };
   onClickActive = () => {
-    this.props.onClickingFilter("active");
+    this.props.onClickingFilter(filters.active);
   };
   onClickCompleted = () => {
-    this.props.onClickingFilter("completed");
+    this.props.onClickingFilter(filters.completed);
   };
   onClickClear = () => {
-    this.props.onClickingClear("clear");
+    this.props.onClickingClear(filters.clear);
   };
   render() {
     return (
@@ -28,38 +28,38 @@ class ActionToPerformOnToDoList extends Component {
         </div>
         <div>
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            this.props.action === "all" ? (
+            this.props.filter === filters.all ? (
               <button onClick={this.onClickAll} className="selected">
-                All
+                all
               </button>
             ) : (
-              <button onClick={this.onClickAll} className="action-buttons">
-                All
+              <button onClick={this.onClickAll} className="filter-buttons">
+                all
               </button>
             )
           ) : null}
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            this.props.action === "active" ? (
+            this.props.filter === filters.active ? (
               <button onClick={this.onClickActive} className="selected">
-                Active
+                active
               </button>
             ) : (
-              <button onClick={this.onClickActive} className="action-buttons">
-                Active
+              <button onClick={this.onClickActive} className="filter-buttons">
+                active
               </button>
             )
           ) : null}
           {this.props.noOfActiveToDos || this.props.noOfCompletedToDos ? (
-            this.props.action === "completed" ? (
+            this.props.filter === filters.completed ? (
               <button onClick={this.onClickCompleted} className="selected">
-                Completed
+                completed
               </button>
             ) : (
               <button
                 onClick={this.onClickCompleted}
-                className="action-buttons"
+                className="filter-buttons"
               >
-                Completed
+                completed
               </button>
             )
           ) : null}
@@ -67,7 +67,7 @@ class ActionToPerformOnToDoList extends Component {
         <div>
           {this.props.noOfCompletedToDos ? (
             <div onClick={this.onClickClear} className="clear-button">
-              Clear Completed
+              clear completed
             </div>
           ) : null}
         </div>
@@ -75,4 +75,4 @@ class ActionToPerformOnToDoList extends Component {
     );
   }
 }
-export default ActionToPerformOnToDoList;
+export default FilteringToDoList;
